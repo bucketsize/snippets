@@ -12,30 +12,32 @@ using namespace std;
 // specify the complete dimension of all enclosures.
 // Seen in examples below.
 
+typedef int (*pIntArray)[4];
+typedef int (&rIntArray)[3][4];
+
 // parameter: pointer to an array of type int[4]
 // return: pointer to a pointer
-int** get2dArray_ptr(int (*x)[4]){
+pIntArray get2dArray_ptr(pIntArray x){
     x[2][3] += 2;
-    return (int**)x;
+    return x;
 }
 
 // parameter: reference to an array of type int[3][4]
 // return: reference to an array of type int[3][4]
-int (&get2dArray_ref(int (&x)[3][4]))[3][4]{
+rIntArray get2dArray_ref(rIntArray x){
     x[2][3] -= 2;
     return x;
 }
 
 int main(){
-    int (*a)[4]; 
-    a = new int[3][4];
+    pIntArray a = (pIntArray) new int[3][4];
     a[2][3] = 21;
 
-    int (&b)[3][4] = (int (&)[3][4])*a;
+    rIntArray b = (rIntArray)*a;
 
-    int (*y)[4] =(int (*)[4]) get2dArray_ptr(a);
+    pIntArray y = (pIntArray) get2dArray_ptr(a);
     cout << "value 2,3: " << y[2][3] << endl;
 
-    int (&z)[3][4] = (int (&)[3][4])get2dArray_ref(b);
+    rIntArray z = (rIntArray) get2dArray_ref(b);
     cout << "value 2,3: " << z[2][3] << endl;	
 }
