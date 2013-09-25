@@ -10,6 +10,7 @@ using namespace std;
 // array[2][3] using reference
 //  specify the complete dimension of all enclosures.
 
+// using typedef reduces alot of clutter in fn decl
 typedef int (*pIntArray)[4];
 typedef int (&rIntArray)[3][4];
 
@@ -22,7 +23,7 @@ pIntArray get2dArray_ptr(pIntArray x){
 
 // parameter: reference to an array of type int[3][4]
 // return: reference to an array of type int[3][4]
-rIntArray get2dArray_ref(rIntArray x){
+rIntArray get2dArray_ref(rIntArray x){ 
     x[2][3] -= 2;
     return x;
 }
