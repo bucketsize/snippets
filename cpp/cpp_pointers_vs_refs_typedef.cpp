@@ -3,14 +3,12 @@
 
 using namespace std;
 
-// Note: to pass a array[2][3], by reference
-// we need only specify the inner dimension
-// and leave the outer enclosure addressed by a pointer
-// hence we dont completely specify the dimension when
-// using a pointer to pass an array.
-// but using a reference to pass an array, need to 
-// specify the complete dimension of all enclosures.
-// Seen in examples below.
+// Note: using typedef
+// array[2][3] by reference
+//  specify inner enclosure (2d: cols: in row of cols)
+//  pointer referencer the outer enclosure (2d: rows)
+// array[2][3] using reference
+//  specify the complete dimension of all enclosures.
 
 typedef int (*pIntArray)[4];
 typedef int (&rIntArray)[3][4];
