@@ -19,7 +19,7 @@ int** get2dArray_ptr(int (*x)[4]){
 
 // parameter: reference to an array of type int[3][4]
 // return: reference to an array of type int[3][4]
-int (&get2dArray_ref(int (&x)[3][4]))[3][4]{
+int (&get2dArray_ref(int (&x)[3][4]))[3][4]{ // using typedef reduces alot of clutter in fn decl
     x[2][3] -= 2;
     return x;
 }
